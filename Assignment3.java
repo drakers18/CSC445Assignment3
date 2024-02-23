@@ -1,3 +1,9 @@
+/*
+ * CSC 445 Assignment 3
+ * Drew Rakers
+ * Works Cited: OpenAI
+ */
+
 import java.util.Arrays;
 
 public class Assignment3 {
@@ -25,22 +31,19 @@ public class Assignment3 {
     public static int coinChangeGreedy(int[] coinValues, int change) {
         Arrays.sort(coinValues);
         int numCoins = 0;
-        int index = coinValues.length - 1;
 
-        while (change > 0 && index >= 0) {
-            if (coinValues[index] <= change) {
-                int count = change / coinValues[index];
-                numCoins += count;
-                change -= count * coinValues[index];
+        for (int i = coinValues.length - 1; i >= 0; i--) {
+            while (change >= coinValues[i]) {
+                change -= coinValues[i];
+                numCoins++;
             }
-            index--;
         }
 
         return change == 0 ? numCoins : -1;
     }
 
     public static void main(String[] args) {
-        int[] coins = {50, 25, 10, 5, 1};
+        int[] coins = {1, 3, 4};
 
         System.out.println("Change\tDP\tGreedy");
         for (int i = 1; i <= 55; i++) {
