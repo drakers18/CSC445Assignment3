@@ -1,13 +1,14 @@
 /*
  * CSC 445 Assignment 3
  * Drew Rakers
- * Works Cited: OpenAI
+ * Resources Used: OpenAI
  */
 
 import java.util.Arrays;
 
 public class Assignment3 {
 
+    //Dynamic Algorithm
     public static int coinChangeDP(int[] coinValues, int change) {
         int[] dp = new int[change + 1];
         Arrays.fill(dp, Integer.MAX_VALUE);
@@ -28,6 +29,7 @@ public class Assignment3 {
         }
     }
 
+    //Greedy Algorithm
     public static int coinChangeGreedy(int[] coinValues, int change) {
         Arrays.sort(coinValues);
         int numCoins = 0;
@@ -42,6 +44,7 @@ public class Assignment3 {
         return change == 0 ? numCoins : -1;
     }
 
+    //Main
     public static void main(String[] args) {
         int[] coins = {1, 3, 4};
 
